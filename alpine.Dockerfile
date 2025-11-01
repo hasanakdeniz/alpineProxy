@@ -15,7 +15,7 @@ RUN echo "logoutput: stderr" > /etc/sockd.conf && \
     echo "clientmethod: none" >> /etc/sockd.conf && \
     echo "socksmethod: username" >> /etc/sockd.conf && \
     echo "client pass { from: 0.0.0.0/0 to: 0.0.0.0/0 }" >> /etc/sockd.conf && \
-    echo "socks pass { from: 0.0.0.0/0 to: 0.0.0.0/0 protocol: tcp }" >> /etc/opppsockd.conf && \
+    echo "socks pass { from: 0.0.0.0/0 to: 0.0.0.0/0 protocol: tcp }" >> /etc/sockd.conf && \
     echo "socks pass { from: 0.0.0.0/0 to: 0.0.0.0/0 protocol: udp }" >> /etc/sockd.conf && \
     echo "socks block { from: 0.0.0.0/0 to: 0.0.0.0/0 }" >> /etc/sockd.conf
 
