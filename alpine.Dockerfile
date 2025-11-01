@@ -9,7 +9,6 @@ RUN adduser -D -s /sbin/nologin test && \
 
 RUN echo "logoutput: stderr" > /etc/sockd.conf && \
     echo "internal: 0.0.0.0 port = 1080" >> /etc/sockd.conf && \
-    echo "" >> /etc/sockd.conf && \
     echo "socksmethod: username" >> /etc/sockd.conf && \
     echo "user.privileged: root" >> /etc/sockd.conf && \
     echo "user.notprivileged: nobody" >> /etc/sockd.conf && \
