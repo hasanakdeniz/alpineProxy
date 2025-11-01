@@ -9,3 +9,6 @@ services:
     tty: true
     volumes:
       - alpine:/alpine
+
+  volumes:
+    alpine: {}
