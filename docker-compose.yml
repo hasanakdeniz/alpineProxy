@@ -1,18 +1,9 @@
 services:
-  alpine:
-    build:
-      context: .
-      dockerfile: alpine.Dockerfile
-      args:
-        AIP: ${AIP}
-        AUSER: ${AUSER}
-        APASSWORD: ${APASSWORD}
-    restart: unless-stopped
-    ports: 
-      - "1080:1080"
-    tty: true
+  sockd:
+    image: lozyme/sockd
+    container_name: sockd
+    restart: always
+    ports:
+      - 2020:2020
     volumes:
-      - alpine:/alpine
-
-volumes:
-  alpine: {}
+      - sockd.passwd:/home/danted/conf/sockd.passwd
