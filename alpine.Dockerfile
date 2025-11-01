@@ -12,6 +12,8 @@ RUN apk update && \
 
 RUN echo "logoutput: stderr" > /etc/sockd.conf && \
     echo "internal: 0.0.0.0 port = 1080" >> /etc/sockd.conf && \
+    # 🚨 Gerekli Düzeltme: Dışarı çıkış için eth0'ı belirtin
+    echo "external: eth0" >> /etc/sockd.conf && \
     echo "clientmethod: none" >> /etc/sockd.conf && \
     echo "socksmethod: username" >> /etc/sockd.conf && \
     echo "client pass { from: 0.0.0.0/0 to: 0.0.0.0/0 }" >> /etc/sockd.conf && \
