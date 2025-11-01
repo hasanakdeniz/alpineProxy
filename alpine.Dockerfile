@@ -3,14 +3,11 @@ FROM alpine:latest
 ARG AUSER=user
 ARG APASSWORD=pass
 
-# Gerekli paketleri kur ve kullanıcıyı ekle
 RUN apk update && \
     apk add dante-server bash && \
     adduser -D -s /sbin/nologin $AUSER && \
     echo "$AUSER:$APASSWORD" | chpasswd && \
-    rm -rf /var/cache/apk/*
 
-# Dante Konfigürasyonu
 RUN echo "logoutput: stderr" > /etc/sockd.conf && \
     echo "internal: eth0 port = 1080" >> /etc/sockd.conf && \
     echo "external: eth0" >> /etc/sockd.conf && \
@@ -23,5 +20,4 @@ RUN echo "logoutput: stderr" > /etc/sockd.conf && \
 
 EXPOSE 1080
 
-# 🚨 Düzeltme: -D bayrağını kaldırıp ön planda tutmaya zorluyoruz
-CMD ["/usr/sbin/sockd", "-f"]
+CMD ["/usr/sbin/sockd", "-f", "/etc/sockd.conf"]
