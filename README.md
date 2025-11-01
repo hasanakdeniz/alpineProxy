@@ -3,4 +3,4 @@ check
 
 SOCKS5 username and password are not supported by Chrome and Chromium-based browsers. Please use Firefox.
 
-best extension: smart proxy
+extension: smart proxy
