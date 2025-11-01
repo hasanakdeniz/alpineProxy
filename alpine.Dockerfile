@@ -7,8 +7,8 @@ RUN apk update && \
 RUN adduser -D -s /sbin/nologin test && \
     echo "test:$(openssl passwd -6 test)" | chpasswd -e
 
-RUN echo "internal: eth0 port = 1080" > /etc/sockd.conf && \
-    echo "external: eth0" >> /etc/sockd.conf && \
+RUN echo "internal: default port = 1080" > /etc/sockd.conf && \
+    echo "external: default" >> /etc/sockd.conf && \
     echo "" >> /etc/sockd.conf && \
     echo "socksmethod: username" >> /etc/sockd.conf && \
     echo "" >> /etc/sockd.conf && \
