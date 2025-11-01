@@ -9,7 +9,7 @@ services:
         APASSWORD: ${APASSWORD}
     restart: unless-stopped
     ports: 
-      - 1080:1080
+      - 1080
     tty: true
     volumes:
       - alpine:/alpine
