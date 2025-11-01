@@ -7,6 +7,7 @@ RUN apk update && \
     apk add dante-server bash && \
     adduser -D -s /sbin/nologin $AUSER && \
     echo "$AUSER:$APASSWORD" | chpasswd && \
+    rm -rf /var/cache/apk/*
 
 RUN echo "logoutput: stderr" > /etc/sockd.conf && \
     echo "internal: eth0 port = 1080" >> /etc/sockd.conf && \
@@ -20,4 +21,4 @@ RUN echo "logoutput: stderr" > /etc/sockd.conf && \
 
 EXPOSE 1080
 
-CMD ["/usr/sbin/sockd", "-f", "/etc/sockd.conf"]
+CMD ["/usr/sbin/sockd", "-f"]
