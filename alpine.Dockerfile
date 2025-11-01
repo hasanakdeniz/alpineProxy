@@ -1,4 +1,7 @@
 FROM alpine:latest
+ARG AIP=AIP
+ARG AUSER=USER
+ARG APASSWORD=APASSWORD
 
 RUN apk update && \
     apk add dante-server && \
@@ -6,7 +9,7 @@ RUN apk update && \
 
 RUN echo "logoutput: stderr" > /etc/sockd.conf && \
     echo "internal: 0.0.0.0 port = 1080" >> /etc/sockd.conf && \
-    echo "external: eth0" >> /etc/sockd.conf && \
+    echo "external: ${AIP}" >> /etc/sockd.conf && \
     echo "clientmethod: none" >> /etc/sockd.conf && \
     echo "socksmethod: none" >> /etc/sockd.conf && \
     echo "client pass { from: 0.0.0.0/0 to: 0.0.0.0/0 }" >> /etc/sockd.conf && \
