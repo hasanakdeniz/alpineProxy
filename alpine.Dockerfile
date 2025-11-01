@@ -22,6 +22,7 @@ RUN rm -f /etc/sockd.conf && \
     echo "socks pass {" >> /etc/sockd.conf && \
     echo "  from: 0.0.0.0/0 to: 0.0.0.0/0" >> /etc/sockd.conf && \
     echo "  log: error connect" >> /etc/sockd.conf && \
-    echo "}"
+    echo "}" >> /etc/sockd.conf && \
+    chmod 644 /etc/sockd.conf
 
 CMD ["/usr/sbin/sockd", "-D", "-f", "/etc/sockd.conf"]
