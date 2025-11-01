@@ -1,14 +1,9 @@
-services:
-  alpine:
-    build:
-      context: .
-      dockerfile: alpine.Dockerfile
-    restart: always
-    ports: 
-      - 1080
-    tty: true
-    volumes:
-      - alpine:/alpine
+version: '3.8'
 
-volumes:
-  alpine: {}
+services:
+  socks5-proxy:
+    build: .
+    container_name: alpine-socks5-proxy
+    ports:
+      - "1080:1080"
+    restart: unless-stopped
