@@ -1,0 +1,11 @@
+services:
+  alpine:
+    build:
+      context: .
+      dockerfile: alpine.Dockerfile
+    restart: always
+    ports: 
+      - 80
+    tty: true
+    volumes:
+      - alpine:/alpine
