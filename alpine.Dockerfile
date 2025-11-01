@@ -1,7 +1,7 @@
 FROM alpine:latest
 
-ARG AUSER=user
-ARG APASSWORD=pass
+ARG AUSER=AUSER
+ARG APASSWORD=APASSWORD
 
 RUN apk update && \
     apk add dante-server bash && \
