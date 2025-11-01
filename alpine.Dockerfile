@@ -6,8 +6,7 @@ RUN apk update && \
 
 RUN adduser -D -s /sbin/nologin test && \
     echo "test:$(openssl passwd -6 test)" | chpasswd -e \
-    rm -rf /etc/sockd.conf
-
-
+    rm -rf /etc/sockd.conf \
+    echo "." > /etc/sockd.conf
 
 CMD ["/usr/sbin/sockd", "-D", "-f", "/etc/sockd.conf"]
