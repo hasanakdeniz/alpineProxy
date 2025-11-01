@@ -7,5 +7,4 @@ RUN apk update && \
 RUN adduser -D -s /sbin/nologin test && \
     echo "test:$(openssl passwd -6 test)" | chpasswd -e
 
-
 CMD ["bash"]
