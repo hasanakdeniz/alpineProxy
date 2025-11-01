@@ -23,4 +23,4 @@ RUN echo "logoutput: stderr" > /etc/sockd.conf && \
 
 EXPOSE 1080
 
-CMD ["sockd", "-D"]
+CMD ["sh"]
