@@ -13,6 +13,9 @@ services:
     tty: true
     volumes:
       - alpine:/alpine
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
 
 volumes:
   alpine: {}
