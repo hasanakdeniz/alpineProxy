@@ -1,20 +1,25 @@
 FROM alpine:latest
-ARG AIP=AIP
-ARG AUSER=USER
-ARG APASSWORD=APASSWORD
+
+ARG AIP=eth0
+ARG AUSER=user
+ARG APASSWORD=pass
 
 RUN apk update && \
-    apk add dante-server && \
+    apk add dante-server bash && \
+    adduser -D -s /sbin/nologin $AUSER && \
+    echo "$AUSER:$APASSWORD" | chpasswd && \
     rm -rf /var/cache/apk/*
 
 RUN echo "logoutput: stderr" > /etc/sockd.conf && \
     echo "internal: 0.0.0.0 port = 1080" >> /etc/sockd.conf && \
     echo "external: ${AIP}" >> /etc/sockd.conf && \
     echo "clientmethod: none" >> /etc/sockd.conf && \
-    echo "socksmethod: none" >> /etc/sockd.conf && \
+    echo "socksmethod: username" >> /etc/sockd.conf && \
     echo "client pass { from: 0.0.0.0/0 to: 0.0.0.0/0 }" >> /etc/sockd.conf && \
-    echo "socks pass { from: 0.0.0.0/0 to: 0.0.0.0/0 }" >> /etc/sockd.conf
+    echo "socks pass { from: 0.0.0.0/0 to: 0.0.0.0/0 protocol: tcp }" >> /etc/sockd.conf && \
+    echo "socks pass { from: 0.0.0.0/0 to: 0.0.0.0/0 protocol: udp }" >> /etc/sockd.conf && \
+    echo "socks block { from: 0.0.0.0/0 to: 0.0.0.0/0 }" >> /etc/sockd.conf
 
 EXPOSE 1080
 
-CMD ["sleep 2", "sockd", "-D"]
+CMD ["sockd", "-D"]
