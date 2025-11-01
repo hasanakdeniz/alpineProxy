@@ -5,8 +5,8 @@ ARG APASSWORD=APASSWORD
 
 RUN apk update && \
     apk add dante-server bash && \
-    adduser -D -s /sbin/nologin $AUSER && \
-    echo "$AUSER:$APASSWORD" | chpasswd && \
+    adduser -D -s /sbin/nologin ${AUSER} && \
+    echo "${AUSER}:${APASSWORD}" | chpasswd && \
     rm -rf /var/cache/apk/*
 
 RUN echo "logoutput: stderr" > /etc/sockd.conf && \
