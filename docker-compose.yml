@@ -6,4 +6,8 @@ services:
     container_name: alpine-socks5-proxy
     ports:
       - "1080:1080"
+    volumes:
+      - proxy
     restart: unless-stopped
+volumes:
+  proxy: {}
