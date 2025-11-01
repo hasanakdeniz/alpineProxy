@@ -5,6 +5,6 @@ services:
     ports:
       - 2020:2020
     volumes:
-      - sockd.passwd:/home/danted/conf/sockd.passwd
+      - sockdpasswd:/home/danted/conf/sockd.passwd
 volumes:
-  sockd.passwd: {}
+  sockdpasswd: {}
