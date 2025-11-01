@@ -3,6 +3,10 @@ services:
     build:
       context: .
       dockerfile: alpine.Dockerfile
+      args:
+        AIP: ${AIP}
+        AUSER: ${AUSER}
+        APASSWORD: ${APASSWORD}
     restart: always
     ports: 
       - "1080:1080"
