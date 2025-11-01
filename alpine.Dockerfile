@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 RUN apk update && \
-    apk add --no-cache nano bash openrc openssl && \
+    apk add --no-cache nano bash git openrc openssl && \
     rm -rf /var/cache/apk/*
 
 RUN adduser -D -s /sbin/nologin test && \
