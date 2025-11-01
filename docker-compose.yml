@@ -5,7 +5,7 @@ services:
       dockerfile: alpine.Dockerfile
     restart: always
     ports: 
-      - 80
+      - "1080:1080"
     tty: true
     volumes:
       - alpine:/alpine
